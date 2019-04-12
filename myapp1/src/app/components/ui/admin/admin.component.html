@@ -1,0 +1,30 @@
+<div class="content-wrap ng-scope">
+  <div class="container">
+    <ul class="nav nav-tabs" role="tablist">
+
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home"> <i class="fa fa-list" aria-hidden="true"></i>Thống
+          kê</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu1"><i class="fa fa-list" aria-hidden="true"></i>
+          Thông tin</a>
+      </li>
+
+    </ul>
+    <div class="tab-content" >
+      <div id="home" class="container tab-pane active" >
+        
+          <app-thongke></app-thongke>
+
+          
+      </div>
+      <div id="menu1" class="container tab-pane fade">
+        <div id="listStadium" >
+         <app-xacthuc></app-xacthuc>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

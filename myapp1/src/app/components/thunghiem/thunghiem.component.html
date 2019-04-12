@@ -1,0 +1,87 @@
+<div class="page-team-setting layout-main-content ng-scope">
+        <div class="heading-block">
+         
+          <p class="title-box ng-scope"><i class="fa fa-map-marker"></i> Quản lí thông báo </p>
+          
+        </div> 
+        <div class="alert alert-info" role="alert" *ngIf="info">
+                {{info}}
+              </div>
+        <div class="col-md-8">
+                
+                <form class="form-horizontal ng-pristine ng-valid" role="form" method="get">
+                  <div class="form-group form-group-sm">
+                    <label class="control-label col-sm-3">Khu vực:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty"  [(ngModel)]="diadiem" name="khuvuc"
+                        placeholder="Nhập tên khu vực thường đá (Cách nhau bởi dấu,)">
+                    </div>
+                  </div>
+                 
+                  <div class="form-group form-group-sm" >
+                    <label class="control-label col-sm-3">Thời gian </label>
+                    <div class="col-sm-9 " style="display: flex;">
+                      <input type="text"  class="form-control  " [(ngModel)]="thoigian" name="thoigian"
+                        placeholder="Khoảng 16h- 20h">
+                        <input type="date"  class="form-control " [(ngModel)]="ngay" name="ngay">
+                    </div>
+                  </div>
+                  <div class="form-group form-group-sm">
+                    <label class="control-label col-sm-3">Giới thiệu:</label>
+                    <div class="col-sm-9">
+            
+                      <input type="text" name="gioithieu" cols="5" [(ngModel)]="noidung"  class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                        placeholder="Thiếu vị trí thủ môn/ Tìm đội để nhậu">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="clear-bordered"></div>
+                    <div class="form-group text-right">
+                      <div class="col-sm-offset-2 col-sm-10">
+            
+                        <button (click)="update()" class="btn btn-primary btn-primary-extra" type="submit">
+                          <i class="fa fa-save"></i>
+                          Cập nhật
+                        </button><button  (click)="clearform()" class="btn btn-danger btn-danger-extra" type="reset">
+                         
+                         Nhập lại 
+                        </button>
+                        
+                      </div>
+                    </div>
+            
+                  </div>
+                </form>
+      
+        <div class="form-group row">
+          <div class="clear-bordered"></div>
+          <div class="heading-block">
+            <!-- ngIf: vm.teamId == 0 -->
+            <p class="title-box ng-scope"><i class="fa fa-map-marker"></i>Các thông báo đã đăng</p>
+            <!-- end ngIf: vm.teamId == 0 -->
+            <!-- ngIf: vm.teamId > 0 -->
+          </div>
+          <div class="jumbotron"  *ngIf="!arrds">
+              <h3 class="display-5">Rất tiếc</h3>
+              <p class="lead">Hiện tại chưa có kèo nào</p>
+              
+             
+              
+            </div> 
+          <ul >
+            <li >
+                <div class="alert alert-success alert-dismissible" *ngFor="let TB of arrds| paginate: { itemsPerPage: 10, currentPage: p };index as i">
+                <a (click)="delTB(TB.id)" class="close">×</a>
+                <a (click)="getinfo(i,TB.id)" class="close"><i class="fa fa-pencil"></i></a>
+                <strong>{{TB.ngay| date:'dd/MM/yyyy'}}</strong><span>Thời gian:{{TB.thoigian}} </span><span>Địa Điểm:{{TB.diadiem}}</span><p></p> <span>Nội dung:{{TB.noidung}}</span>
+              </div>
+            </li>
+            
+          </ul>
+          <div class="col-md-12">
+            <div class="pagination_container">
+              <pagination-controls class="pagination_container" previousLabel="Trước" nextLabel="Tiếp" (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+        </div>
+      </div>

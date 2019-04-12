@@ -1,0 +1,106 @@
+<div class="page-team-setting layout-main-content ng-scope">
+    
+  <div class="heading-block">
+    <!-- ngIf: vm.teamId == 0 -->
+    <p ng-if="vm.teamId == 0" class="title-box ng-scope"><i class="fa fa-map-marker" aria-hidden="true"></i>
+      Quản lí đội bóng </p><!-- end ngIf: vm.teamId == 0 -->
+    <!-- ngIf: vm.teamId > 0 -->
+  </div> <!-- /.heading-block -->
+  <div class="alert alert-info" role="alert" *ngIf="info">
+    {{info}}
+  </div>
+  <div class="alert alert-danger" *ngIf="trangthai==0">	
+      <strong>Cảnh báo!</strong> Sân bóng của bạn chưa được xác thực!! Hãy gửi email tới : sanbongvinh@gmail.com để xác nhận.
+    </div>
+  <div  class="col-md-3">
+    <img  alt="avatar" style="margin-top:50%" class="media-object" id="profile-avatar"
+      src="{{anh}}" width="100%"></div>
+
+  <div class="col-md-8">
+    <form class="form-horizontal ng-pristine ng-valid" role="form" method="get">
+      <div class="form-group form-group-sm">
+        <label class="control-label col-sm-3">Tên đội:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="tendoi"
+            placeholder="Nhập tên đội bóng của bạn" [(ngModel)]="tendoi">
+        </div>
+      </div>
+      <div class="form-group form-group-sm">
+        <label class="control-label col-sm-3">Khu vực:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" [(ngModel)]="khuvuc" name="khuvuc"
+            placeholder="Nhập tên khu vực thường đá (Cách nhau bởi dấu,)">
+        </div>
+      </div>
+      <div class="form-group form-group-sm">
+        <label class="control-label col-sm-3">Trình độ:</label>
+        <div class="col-sm-9">
+          <select name="trinhdo" [(ngModel)]="trinhdo" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+
+            <option label="Mới chơi"  selected="selected">Mới chơi</option>
+            <option label="Trung bình" >Trung bình</option>
+            <option label="Trung bình khá" >Trung bình khá</option>
+            <option label="Phủi" >Phủi</option>
+            <option label="Trung bình yếu" >Trung bình yếu</option>
+            <option label="Mềm" >Mềm</option>
+            <option label="Rất mềm" >Rất mềm</option>
+            <option label="Khá" >Khá</option>
+            <option label="Khá mạnh" >Khá mạnh</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group form-group-sm">
+        <label class="control-label col-sm-3">Logo:</label>
+        <div class="col-sm-9" style="padding-top:5px;">
+          <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="anh"
+            placeholder="Nhập địa chỉ ảnh" [(ngModel)]="anh">
+        </div>
+      </div>
+      <div class="form-group form-group-sm" style="display: flex;margin-left: 4px;">
+        <label class="control-label col-sm-3">Tìm đối</label>
+        <div>
+          <label class="switch">
+            <input type="checkbox" name="timdoi" value="" [(ngModel)]="timdoi">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <label style="padding: none;padding-left: 10px">Đã có sân</label>
+        <div>
+          <label class="switch">
+            <input type="checkbox" name="cosan" [(ngModel)]="cosan">
+            <span class="slider round"></span>
+          </label>
+
+
+        </div>
+      </div>
+      <div class="form-group form-group-sm">
+        <label class="control-label col-sm-3">Thời gian thường đá</label>
+        <div class="col-sm-9" style="padding-top:5px;">
+          <input type="text" [(ngModel)]="thoigian" class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="thoigian"
+            placeholder="Nhập thời gian VD thứ 4 hàng tuần">
+        </div>
+      </div>
+      <div class="form-group form-group-sm">
+        <label class="control-label col-sm-3">Giới thiệu:</label>
+        <div class="col-sm-9">
+
+          <input type="text" name="gioithieu" cols="5" [(ngModel)]="gioithieu" class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+            placeholder="Giới thiệu: Ví dụ thường đá ở sân nào?Khoảng thời gian nào?">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="clear-bordered"></div>
+        <div class="form-group text-right">
+          <div class="col-sm-offset-2 col-sm-10">
+
+            <button (click)="update()" class="btn btn-primary btn-primary-extra" type="submit">
+              <i class="fa fa-save"></i>
+              Cập nhật
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>

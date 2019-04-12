@@ -1,0 +1,76 @@
+
+    
+<div class="row"  >
+        <div class="col-md-4">
+            <div class="img-profile" title="Tải lên một hình ảnh đại diện">
+                    <!-- assets/images/user/default-user.png -->
+                <img id="profile-avatar" class="media-object" width="100%"  src="{{anh}}"
+                    alt="avatar">
+            </div>
+        </div>
+    
+        <div class="profile-edit col-md-8 right-item-san">
+
+                <div class="alert alert-success" *ngIf="info">
+                        <strong>Success!</strong> {{info}}
+                      </div>
+            <form id="frmEditProfile" method="get" novalidate="novalidate">
+    
+               
+                <div class="row form-group">
+    
+                    <div class="col-sm-3 col-xs-6">
+                        <label class="control-label ">Tên</label>
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                        <span class="field-validation-valid" data-valmsg-for="UserLastName"
+                            data-valmsg-replace="true"></span>
+                        <input class="form-control" data-val="true" data-val-required="Tên không được để trống"
+                            id="UserLastName" name="ten" type="text" [(ngModel)]="ten" >
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-3 col-xs-6">
+                        <label class="control-label ">Email</label>
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                        <span class="field-validation-valid" data-valmsg-for="UserEmail" data-valmsg-replace="true"></span>
+                        <input class="form-control" id="UserEmail" name="email"  [(ngModel)]="email" type="text" >
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-3 col-xs-6">
+                        <label class="control-label">Điện thoại</label>
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                        <span class="field-validation-valid" data-valmsg-for="UserMobile" data-valmsg-replace="true"></span>
+                        <input class="form-control" id="UserMobile" name="UserMobile" type="text" disabled [(ngModel)]="sodienthoai" >
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-3 col-xs-6">
+                        <label class="control-label">Ảnh đại diện</label>
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                        <span class="field-validation-valid" data-valmsg-for="UserMobile" data-valmsg-replace="true"></span>
+                        <input class="form-control" id="UserMobile" [(ngModel)]="anh" name="anhdaidien" type="text" >
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-3 col-xs-6">
+                        <label class="control-label">Mật khẩu</label>
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                        <span class="field-validation-valid" data-valmsg-for="UserMobile" data-valmsg-replace="true"></span>
+                        <input class="form-control" id="UserMobile" [(ngModel)]="matkhau" name="matkhau" type="password" >
+                    </div>
+                </div>
+                <div class="row form-group">
+    
+                    <input type="submit" class="btn mb20 btn-small btn-primary" (click)="update()" value="Lưu thay đổi">
+                </div>
+    
+            </form>
+        </div>
+    </div>
+

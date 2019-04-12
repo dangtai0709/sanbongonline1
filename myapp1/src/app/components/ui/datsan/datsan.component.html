@@ -1,0 +1,98 @@
+<div class="breadcrum">
+    <div class="container">
+        <div class="breadcrum-line">
+            <a href="index.html">Trang chủ</a>
+            <a href="san-bong.html" class="" title="Sân bóng">Sân bóng</a>
+            <a>Tìm sân nhanh</a>
+        </div>
+    </div>
+</div>
+<div class="content-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9" id="stadium-list">
+                <div class="p-content">
+                    <h1 id="a" class="title-intent title-pages  mobile-padlr-15"><i class="fa fa-futbol-o"
+                            aria-hidden="true"></i> Tìm sân trống</h1>
+                    
+                        <div class="form-group row mobile-padlr-15">
+                            <div class="col-md-9 col-xs-9 margin-b10">
+                                <input type="text" class="form-control" name="khuvuc" [(ngModel)]="khuvuc" placeholder="Nhập khu vực">
+                            </div>
+                            
+                            <div class="col-md-2">
+                                <button  class="btn btn-primary" (click)="timkiem()">
+                                    Tìm kiếm
+                                </button>
+                            </div>
+                        </div>
+                        <div class="jumbotron" *ngIf="arrSB.length<=0">
+                                <h3 class="display-5">Rất tiếc</h3>
+                                <p class="lead">Hiện tại chưa có sân bóng ở khu vực này</p>
+                                <hr class="my-4">
+                                <p>Bạn có thể đăng ký sân bóng mới hoặc tìm ở khu vực khác</p>
+                                <p class="lead">
+                                  <a class="btn btn-primary btn-lg" href="/datsan" role="button">Danh sách sân bóng</a>
+                                </p>
+                              </div>
+                    <ul class="list-item-san" id="table">
+                       <span *ngFor="let SB of arrSB| paginate: { itemsPerPage: 10, currentPage: p } ">
+                        <li class="item-card"  *ngIf="SB.trangthai ==1" >
+                            <div class="row">
+                                <div class="col-md-5 item-preview-image">
+                                    <a href="#" title="Logo sân">
+                                        <img class="img-responsive" src="{{SB.anh}}" align="thumbnail" title="Logo sân"
+                                            style=" border-radius: 20px;margin: auto;width: auto;height: auto;">
+                                    </a>
+
+                                </div>
+                                <div class="col-md-7 right-item-san">
+                                   
+                                    <p class="phone-numb"><i class="fa fa-info-circle" style="font-size:24px"></i>Thông
+                                        tin sân <span style="color: red;font-size: 20px">{{SB.tensan}}
+                                        </span>
+                                        <span id="idsan" hidden="hidden">{{SB.masanbong}}</span>
+                                    </p>
+
+
+                                    <p> <span class="alert alert-info">Đây là <strong># {{SB.loaisan}} </strong></span>
+                                        {{SB.thongtin}}</p>
+
+
+
+                                    <p>
+                                        <a href="https://www.google.com/maps/place/{{SB.khuvuc}}">
+                                            <i class="fa fa-map-o" aria-hidden="true"></i> {{SB.khuvuc}}
+                                        </a>
+                                    </p>
+                                    <p class="phone-numb"><i class="fa fa-phone-square" aria-hidden="true">
+                                            {{SB.mataikhoan}}
+                                        </i>
+                                    </p>
+
+                                    <p class="phone-numb"><i class="fa fa-calendar-times-o">Gồm {{SB.sosan}} sân chính
+                                        </i> Đã có {{SB.luot}} lượt đặt sân
+
+                                    </p>
+                                </div>
+                                <div > <a href="/chitiet/{{SB.masanbong}}" class="btn btn-primary " style="margin-left: 50%;">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </li>
+                    </span>
+                    </ul>
+                    <!--End list-item-san-->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="pagination_container">
+              <pagination-controls class="pagination_container" previousLabel="Trước" nextLabel="Tiếp" (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+       
+        <!--End row-->
+    </div>
+    <!--End container-->
+</div>

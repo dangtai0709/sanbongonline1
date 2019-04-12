@@ -1,0 +1,132 @@
+<form method="get" action="http://localhost:3000/doibong/">
+    <input type="text" name="khuvuc" value="333">
+
+    <input type="submit" value="OK">
+</form>
+<br>
+//taosan
+<form method="post" action="http://localhost:3000/sanbong/">
+    <select name="loaisan">
+        <option>a</option>
+        <option>b</option>
+        <option>c</option>
+        <option>d</option>
+        <option>e</option>
+
+    </select>
+
+    <input type="text" name="mataikhoan" value="333">
+    <input type="text" name="tensan">
+    <input type="text" name="anh">
+    <input type="text" name="thongtin">
+    <input type="text" name="khuvuc">
+    <input type="text" name="sosan">
+    <input type="text" name="gia1">
+    <input type="text" name="gia2">
+    <input type="text" name="gia3">
+    <input type="text" name="gia4">
+    <input type="text" name="gia5">
+    <input type="submit" value="OK">
+</form>
+<form method="post" action="http://localhost:3000/taikhoan/login">
+    <input name="sodienthoai">
+    <input name="matkhau">
+    <input type="submit" value="OK">
+</form>
+// update taikhoan
+<form method="post" action="http://localhost:3000/taikhoan/">
+    <input name="sodienthoai">
+    <input name="matkhau">
+    <input type="submit" value="OK">
+</form>
+// datsan
+<form method="post" action="http://localhost:3000/datsan">
+    <input name="masanbong" type="text" value="SB13">
+    <input name="tennguoidat" type="text">
+    <input name="ngay" type="text">
+    <input name="batdau" type="text">
+    <input name="lienhe" type="text" value="123">
+    <input name="ghichu" type="text">
+    <input value="OK" type="submit">
+</form>
+//dang thong bao
+<form method="POST" action="http://localhost:3000/thongbao/">
+    <input name="mataikhoan" value="123">
+    <input name="noidung">
+    <input type="submit" value="OK">
+
+</form>
+//tao doi bong
+<div _ngcontent-c4="" class="col-md-8">
+    <form _ngcontent-c4="" class="form-horizontal ng-valid ng-dirty ng-touched" method="post" action="http://localhost:3000/doibong" novalidate="" role="form">
+  <input name="mataikhoan" value="234">
+        <div _ngcontent-c4="" class="form-group form-group-sm"><label _ngcontent-c4=""
+                class="control-label col-sm-3">Tên đội:</label>
+            <div _ngcontent-c4="" class="col-sm-9"><input _ngcontent-c4=""
+                    class="form-control ng-valid ng-empty ng-dirty ng-touched" name="tendoi"
+                    placeholder="Nhập tên đội bóng của bạn" type="text" ng-reflect-name="inpName"
+                    ng-reflect-model="fsdf"></div>
+        </div>
+        <div _ngcontent-c4="" class="form-group form-group-sm"><label _ngcontent-c4=""
+                class="control-label col-sm-3">Khu vực:</label>
+            <div _ngcontent-c4="" class="col-sm-9"><input _ngcontent-c4=""
+                    class="form-control ng-valid ng-empty ng-dirty ng-touched" name="khuvuc"
+                    placeholder="Nhập tên khu vực thường đá (Cách nhau bởi dấu,)" type="text" ng-reflect-name="khuvuc"
+                    ng-reflect-model="fdsf"></div>
+        </div>
+        <div _ngcontent-c4="" class="form-group form-group-sm"><label _ngcontent-c4=""
+                class="control-label col-sm-3">Trình độ:</label>
+            <div _ngcontent-c4="" class="col-sm-9"><select _ngcontent-c4=""
+                    class="form-control ng-valid ng-not-empty ng-dirty ng-touched" name="trinhdo"
+                    ng-reflect-name="trinhdo" ng-reflect-model="Trung bình khá">
+                    <option _ngcontent-c4="" label="Mới chơi" selected="selected">Mới chơi</option>
+                    <option _ngcontent-c4="" label="Trung bình">Trung bình</option>
+                    <option _ngcontent-c4="" label="Trung bình khá">Trung bình khá</option>
+                    <option _ngcontent-c4="" label="Phủi">Phủi</option>
+                    <option _ngcontent-c4="" label="Trung bình yếu">Trung bình yếu</option>
+                    <option _ngcontent-c4="" label="Mềm">Mềm</option>
+                    <option _ngcontent-c4="" label="Rất mềm">Rất mềm</option>
+                    <option _ngcontent-c4="" label="Khá">Khá</option>
+                    <option _ngcontent-c4="" label="Khá mạnh">Khá mạnh</option>
+                </select></div>
+        </div>
+        <div _ngcontent-c4="" class="form-group form-group-sm"><label _ngcontent-c4=""
+                class="control-label col-sm-3">Logo:</label>
+            <div _ngcontent-c4="" class="col-sm-9" style="padding-top:5px;"><input _ngcontent-c4=""
+                    class="form-control ng-valid ng-empty ng-dirty ng-touched" name="anh" placeholder="Nhập địa chỉ ảnh"
+                    type="text" ng-reflect-name="anh" ng-reflect-model="fsdf"></div>
+        </div>
+        <div _ngcontent-c4="" class="form-group form-group-sm" style="display: flex;margin-left: 4px;"><label
+                _ngcontent-c4="" class="control-label col-sm-3">Tìm đối</label>
+            <div _ngcontent-c4=""><label _ngcontent-c4="" class="switch"><input _ngcontent-c4="" name="timdoi"
+                        type="checkbox" value="" ng-reflect-name="timdoi" class="ng-valid ng-dirty ng-touched"
+                        ng-reflect-model="true"><span _ngcontent-c4="" class="slider round"></span></label></div><label
+                _ngcontent-c4="" style="padding: none;padding-left: 10px">Đã có sân</label>
+            <div _ngcontent-c4=""><label _ngcontent-c4="" class="switch"><input _ngcontent-c4="" name="cosan"
+                        type="checkbox" ng-reflect-name="cosan" class="ng-valid ng-dirty ng-touched"
+                        ng-reflect-model="true"><span _ngcontent-c4="" class="slider round"></span></label></div>
+        </div>
+        <div _ngcontent-c4="" class="form-group form-group-sm"><label _ngcontent-c4=""
+                class="control-label col-sm-3">Thời gian thường đá</label>
+            <div _ngcontent-c4="" class="col-sm-9" style="padding-top:5px;"><input _ngcontent-c4=""
+                    class="form-control ng-valid ng-empty ng-dirty ng-touched" name="thoigian"
+                    placeholder="Nhập thời gian VD thứ 4 hàng tuần" type="text" ng-reflect-name="thoigian"
+                    ng-reflect-model="sdf"></div>
+        </div>
+        <div _ngcontent-c4="" class="form-group form-group-sm"><label _ngcontent-c4=""
+                class="control-label col-sm-3">Giới thiệu:</label>
+            <div _ngcontent-c4="" class="col-sm-9"><input _ngcontent-c4=""
+                    class="form-control ng-valid ng-empty ng-dirty ng-touched" cols="5" name="gioithieu"
+                    placeholder="Giới thiệu: Ví dụ thường đá ở sân nào?Khoảng thời gian nào?" type="text"
+                    ng-reflect-name="gioithieu" ng-reflect-model="sdf"></div>
+        </div>
+        <div _ngcontent-c4="" class="form-group row">
+            <div _ngcontent-c4="" class="clear-bordered"></div>
+            <div _ngcontent-c4="" class="form-group text-right">
+                <div _ngcontent-c4="" class="col-sm-offset-2 col-sm-10"><button _ngcontent-c4=""
+                        class="btn btn-primary btn-primary-extra" type="submit"><i _ngcontent-c4=""
+                            class="fa fa-save"></i> Cập nhật </button></div>
+            </div>
+        </div>
+    </form>
+</div>

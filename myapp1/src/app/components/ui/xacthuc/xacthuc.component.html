@@ -1,0 +1,66 @@
+<table class="table table-striped table-booking-requests table-responsive">
+	<thead>
+		<tr>
+			
+			<th>Thông tin tài khoản</th>
+			<th>Quản lí đội bóng</th>
+			<th>Quản lí sân bóng</th>
+
+			<th>Tác vụ</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr *ngFor="let tk of arrTK | paginate: { itemsPerPage: 10, currentPage: p }">
+
+			
+			<td><span> SDT:{{tk.sodienthoai}}</span>
+				<p>
+					<span> Email:{{tk.email}}</span>
+				</p>
+			</td>
+			<td>
+
+
+				<span>{{tk.tendoi?tk.tendoi:"Chưa có đội bóng"}}</span>
+
+
+
+
+
+
+
+			</td>
+			<td>
+
+				<span>{{tk.tensan?tk.tensan:"Chưa có sân bóng"}}</span>
+
+			</td>
+
+
+			<td>
+				
+				<span *ngIf="tk.DB!=null">
+					<a *ngIf="tk.DB==0" class="btn btn-primary btn-primary-extra dropdown-toggle"
+						(click)="DB(tk.sodienthoai,tk.DB)">Hiện đội bóng</a>
+						<a *ngIf="tk.DB==1" class="btn btn-danger btn-danger-extra dropdown-toggle"
+						(click)="DB(tk.sodienthoai,tk.DB)">Ẩn đội bóng</a>
+					</span>
+					<span *ngIf="tk.SB!=null">
+				<a *ngIf="tk.SB==0" class="btn btn-primary btn-primary-extra dropdown-toggle"
+						(click)="SB(tk.sodienthoai,tk.SB)">Hiện sân bóng</a>
+						<a *ngIf="tk.SB==1" class="btn btn-danger btn-danger-extra dropdown-toggle"
+						(click)="SB(tk.sodienthoai,tk.SB)">Ẩn sân bóng</a>
+					</span>
+					</td>
+		</tr>
+
+
+
+	</tbody>
+</table>
+<div class="col-md-12">
+		<div class="pagination_container">
+		  <pagination-controls class="pagination_container" previousLabel="Trước" nextLabel="Tiếp" (pageChange)="p = $event"></pagination-controls>
+		</div>
+	</div>

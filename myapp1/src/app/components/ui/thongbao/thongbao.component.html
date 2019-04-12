@@ -1,0 +1,62 @@
+<div class="page-team-setting layout-main-content ng-scope">
+  <div class="heading-block">
+    <!-- ngIf: vm.teamId == 0 -->
+    <p class="title-box ng-scope"><i class="fa fa-map-marker"></i> Quản lí thông báo </p>
+    <!-- end ngIf: vm.teamId == 0 -->
+    <!-- ngIf: vm.teamId > 0 -->
+  </div> <!-- /.heading-block -->
+  <form class="form-horizontal ng-pristine ng-valid" role="form" method="get">
+    <div class="form-group form-group-sm">
+      <div class="alert alert-info" role="alert" *ngIf="info">
+        {{info}}
+      </div>
+      <label class="control-label col-sm-3">Nội dung thông báo</label>
+      <div class="col-sm-9">
+        <input name="noidung" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" id="inpName"
+          placeholder="Nội dung thông báo" [(ngModel)]="noidung">
+      </div>
+
+      <div class="form-group text-right" style="padding-top: 60px;">
+        <div class="col-sm-offset-2 col-sm-10">
+
+          <input type="submit" class="btn btn-primary btn-primary-extra " value="Thêm thông báo" (click)="addTK()">
+
+
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="form-group row">
+    <div class="clear-bordered"></div>
+    <div class="heading-block">
+      <!-- ngIf: vm.teamId == 0 -->
+      <p class="title-box ng-scope"><i class="fa fa-map-marker"></i>Các thông báo đã đăng</p>
+      <!-- end ngIf: vm.teamId == 0 -->
+      <!-- ngIf: vm.teamId > 0 -->
+    </div>
+    <div class="jumbotron"  *ngIf="!arrTB">
+        <h3 class="display-5">Rất tiếc</h3>
+        <p class="lead">Hiện tại chưa có thông báo nào</p>
+        <hr class="my-4">
+        <p>Bạn có thể đăng tối đa 1 thông báo/ngày</p>
+        
+      </div>
+    <ul>
+      <li *ngFor="let TB of arrTB| paginate: { itemsPerPage: 10, currentPage: p }">
+        <div class="alert alert-success alert-dismissible">
+
+          <a (click)="delTB(TB.mathongbao)" class="close">×</a>
+          <strong>{{TB.created_at}}</strong> {{TB.noidung}}.
+        </div>
+      </li>
+      
+    </ul>
+    <div class="col-md-12">
+      <div class="pagination_container">
+        <pagination-controls class="pagination_container" previousLabel="Trước" nextLabel="Tiếp" (pageChange)="p = $event"></pagination-controls>
+      </div>
+  </div>
+  </div>
+</div>

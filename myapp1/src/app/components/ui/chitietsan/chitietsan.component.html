@@ -1,0 +1,180 @@
+<div class="breadcrum">
+    <div class="container">
+        <div class="breadcrum-line">
+            <a href="/index">Trang chủ</a>
+            <a href="/datsan" class="" title="Sân bóng">Sân bóng</a>
+            <a>Tìm sân nhanh</a>
+        </div>
+    </div>
+</div>
+<div class="content-wrap">
+    <div class="container">
+        <div class="row" *ngFor="let SB of arrSB">
+            <div id="stadium-list">
+                <div class="p-content">
+                    <h1 id="a" class="title-intent title-pages  mobile-padlr-15"><i class="fa fa-futbol-o"
+                            aria-hidden="true"></i> Chi tiết sân {{SB.tensan}}</h1>
+
+                    <ul class="list-item-san" id="table" >
+                        <li class="item-card">
+                            <div class="row">
+                                <div class="col-md-5 item-preview-image">
+                                    <a href="#" title="Logo sân">
+                                        <img class="img-responsive" src="{{SB.anh}}" align="thumbnail" title="Logo sân"
+                                            style=" border-radius: 20px;margin: auto;width: auto;height: auto;">
+                                    </a>
+
+                                </div>
+                                <div class="col-md-7 right-item-san">
+                                    
+                                    <p class="phone-numb"><i class="fa fa-info-circle" style="font-size:24px"></i>Thông
+                                        tin sân <span style="color: red;font-size: 20px">{{SB.tensan}}
+                                        </span>
+                                        <span id="idsan" hidden="hidden">{{SB.masanbong}}</span>
+                                    </p>
+
+
+                                    <p> <span class="alert alert-info">Đây là <strong># {{SB.loaisan}}
+                                            </strong></span>{{SB.thongtin}}</p>
+
+
+
+                                    <p>
+                                        <a href="https://www.google.com/maps/place/{{SB.khuvuc}}">
+                                            <i class="fa fa-map-o" aria-hidden="true"></i> {{SB.khuvuc}}
+                                        </a>
+                                    </p>
+                                    <p class="phone-numb"><i class="fa fa-phone-square"
+                                            aria-hidden="true">{{SB.mataikhoan}}</i></p>
+                                    <form action="abc.html">
+
+                                        <input type="date" name="ngay" [(ngModel)]="ngay">
+                                        <input type="submit" class="btn btn-primary" (click)="changedate(ngay)"
+                                            value="Thay đổi">
+                                    </form>
+
+                                    <p class="phone-numb"><i class="fa fa-calendar-times-o">Gồm {{SB.sosan}} sân chính
+                                        </i>
+
+                                    </p>
+                                    <div > <a href="javascript:;" class="btn btn-primary"
+                                        data-toggle="modal" data-target="#datsan">
+
+                                        Đặt sân
+                                    </a></div>
+                                </div>
+                            </div>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Khung giờ</th>
+                                        <th>Giá sân(VNĐ)</th>
+                                        <th>Đã đặt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Buổi sáng</td>
+                                        <td>{{SB.gia1}}</td>
+
+
+                                        <td>{{arrdadat[1]}} /{{SB.sosan*4}}</td>
+
+
+                                    </tr>
+                                    <tr>
+                                        <td>Buổi chiều</td>
+                                        <td>{{SB.gia2}}</td>
+                                        <td>{{arrdadat[2]}} /{{SB.sosan*4}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Buổi tối</td>
+                                        <td>{{SB.gia3}}</td>
+                                        <td>{{arrdadat[3]}} /{{SB.sosan*4}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+                    <!--End list-item-san-->
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function () {
+                $('#idsan2').val($('#idsan').text());
+                $('#table a').click(function (e) {
+                    e.preventDefault();
+                    $('#khuvuc').val($(this).closest('li').find('span:first').text()); //Lấy value cột thứ nhất
+                    $('#idsan1').val($(this).closest('li').find('#idsan').text());
+                    //Hoặc lấy giá trị cột thứ 2
+                });
+            });
+        </script>
+
+        <!--End row-->
+    </div>
+    <!--End container-->
+</div>
+<div id="datsan" class="modal fade in" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Đặt sân</h4>
+
+            </div>
+            <div class="modal-body">
+                <h4 class="alert alert-success" *ngIf="info">{{info}} </h4>
+                <form id="frmSignIn" class="modal-forms">
+
+
+                    <input type="text" name="ten" placeholder="Nhập tên người đặt" required [(ngModel)]="nguoi">
+                    <input name="UserName" type="text" placeholder="Số điện thoại hoặc email" [(ngModel)]="lienhe"
+                        required="" id="UserName" data-msg-require="Tài khoản đăng nhập không được để trống">
+
+
+
+                    <div class="form-group form-group-sm">
+                        <label class="control-label col-sm-3">Ngày </label>
+                        <div class="col-sm-9">
+                            <input type="date" name="ngay"
+                                class="form-control ng-pristine ng-untouched ng-valid ng-not-empty"
+                                data-msg-require="không được để trống" required [(ngModel)]="ngay1">
+
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="control-label col-sm-3">Thời gian:</label>
+                        <div class="col-sm-9">
+                            <select [(ngModel)]="batdau" name="batdau" required
+                                class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                                <optgroup label="Buổi sáng"></optgroup>
+                                <option>6h-7h</option>
+                                <option>7h-8h</option>
+                                <option>8h-9h</option>
+                                <option>9h-10h</option>
+                                <optgroup label="Buổi chiều"></optgroup>
+                                <option>14h-15h</option>
+                                <option>15h-16h</option>
+                                <option>16h-17h</option>
+                                <option>17h-18h</option>
+                                <optgroup label="Buổi tối"></optgroup>
+                                <option>18h-19h</option>
+                                <option>19h-20h</option>
+                                <option>20h-21h</option>
+                                <option>21h-22h</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <input type="text" name="ghichu" [(ngModel)]="ghichu" required placeholder="Ghi Chú">
+                    <button id="btnSignIn" type="submit" (click)="book()">Đặt sân</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

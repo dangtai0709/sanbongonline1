@@ -1,0 +1,150 @@
+<div class="row">
+  <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item active">
+          <a class="nav-link active" data-toggle="tab" href="#home" aria-expanded="true"> <i class="fa fa-list" aria-hidden="true"></i>Yêu cầu đặt sân</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#menu1" aria-expanded="false"><i class="fa fa-list" aria-hidden="true"></i>
+                  Thông tin sân</a>
+      </li>
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+      <div id="home" class="container tab-pane active in"><br>
+          <div id="stadiumBookingRequests" style="min-height:250px; position:relative">
+              <!-- ngIf: overlayLoading -->
+              <table class="table table-striped table-booking-requests table-responsive">
+                  <thead>
+                      <tr>
+                          <th>#</th>
+                         
+                          <th>Người đặt</th>
+                          <th>Thời gian đá</th>
+                          <th>Thời gian đặt sân</th>
+                          <th>Số điện thoại hoặc email</th>
+                          <th>Nội dung</th>
+                          <th  width="250">Tác vụ</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                        
+                      <!-- ngRepeat: item in bookingRequests -->
+                      <tr *ngFor="let ds of arrDS| paginate: { itemsPerPage: 10, currentPage: p };index as i">
+                          <td>{{i}}</td> 
+                          <td>{{ds.tennguoidat}}</td>
+                          <td>{{ds.ngay|date:'dd/MM/yyyy'}} lúc {{ds.batdau}}</td>
+                          <td>{{ds.created_at|date:'dd/MM/yyyy'}}</td>
+                          <td>{{ds.lienhe}}</td>
+                          <td>{{ds.ghichu}}</td>
+                          <td>
+                         <a (click)="delDS(ds.madatsan)" class="btn btn-primary btn-primary-extra dropdown-toggle"><i class="fa fa-close"></i></a>
+                          </td>
+                      </tr>
+                      <tr class="ng-scope" *ngIf="arrDS==''">
+                            <td colspan="6">
+                                Không có yêu cầu đặt sân nào
+                            </td>
+                        </tr>
+                  </tbody>
+              </table>
+              <div class="col-md-12">
+                <div class="pagination_container">
+                  <pagination-controls class="pagination_container" previousLabel="Trước" nextLabel="Tiếp" (pageChange)="p = $event"></pagination-controls>
+                </div>
+            </div>
+          </div>
+      </div>
+      <div id="menu1" class="container tab-pane fade"><br>
+          <div id="listStadium" style="min-height:250px; position:relative">
+            <div class="alert alert-info" role="alert" *ngIf="info">
+                {{info}}
+            </div>    
+            <div class="alert alert-danger" *ngIf="trangthai=='0'">	
+                        <strong>Cảnh báo!</strong> Sân bóng của bạn chưa được xác thực!! Hãy gửi email tới : sanbongvinh@gmail.com để xác nhận.
+                      </div>
+            <div _ngcontent-c7="" class="col-md-3">
+                <img _ngcontent-c7="" alt="avatar" style="margin-top:50%" class="media-object" id="profile-avatar"
+                  src="{{anh}}" width="100%"></div>  
+            <div class="profile-edit col-md-9 right-item-san" style="">
+                  <form  method="get" novalidate="novalidate">
+                      <div class="row">
+                      </div>
+                      <div class="row form-group">
+                          <div class="col-sm-3 col-xs-6">
+                              <label class="control-label ">Loại sân</label>
+                          </div>
+                          <div class="col-sm-6 col-xs-6">
+                              <select class="form-control" id="sel1" name="loaisan" [(ngModel)]="loaisan" >
+                                
+                                  
+                                  
+                                  <option >Sân cỏ nhân tạo</option>
+                                  <option >Sân cỏ tự nhiên</option>
+                                  <option >Sân cát</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="row form-group">
+                          <div class="col-sm-3 col-xs-6">
+                              <label class="control-label ">Tên sân</label>
+                          </div>
+                          <div class="col-sm-6 col-xs-6">
+                              <span class="field-validation-valid" data-valmsg-for="UserEmail" data-valmsg-replace="true"></span>
+                              <input class="form-control" id="UserEmail" name="email" type="text" [(ngModel)]="tensan" placeholder="Nhập Tên sân">
+                          </div>
+                      </div>
+                      <div class="row form-group">
+                          <div class="col-sm-3 col-xs-6">
+                              <label class="control-label">Khu vực</label>
+                          </div>
+                          <div class="col-sm-6 col-xs-6">
+                              <span class="field-validation-valid" data-valmsg-for="UserMobile" data-valmsg-replace="true"></span>
+                              <input class="form-control" id="UserMobile" name="UserMobile" type="text" [(ngModel)]="khuvuc" placeholder="Nhập địa chỉ sân bóng">
+                          </div>
+                      </div>
+                      <div class="row form-group">
+                          <div class="col-sm-3 col-xs-6">
+                              <label class="control-label">Ảnh đại diện</label>
+                          </div>
+                          <div class="col-sm-6 col-xs-6">
+                              <span class="field-validation-valid" data-valmsg-for="UserMobile" data-valmsg-replace="true"></span>
+                              <input class="form-control" id="UserMobile" name="anhdaidien" type="text" [(ngModel)]="anh" placeholder="Nhập link ảnh">
+                          </div>
+                      </div>
+                      <div class="row form-group">
+                          <div class="col-sm-3 col-xs-6">
+                              <label class="control-label">Giá</label>
+                          </div>
+                          <div class="col-sm-6 col-xs-6" style="display: flex;">
+                              <input type="text" class="form-control" name="gia1" placeholder="Ca sáng" [(ngModel)]="gia1">
+                              <input type="text" name="gia2" class="form-control" placeholder="Ca chiều" [(ngModel)]="gia2">
+                              <input type="text" name="gia3" placeholder="Ca tối" class="form-control" [(ngModel)]="gia3">
+                          </div>
+                      </div>
+                      <div class="row form-group">
+                          <div class="col-sm-3 col-xs-6">
+                              <label class="control-label">Số sân con</label>
+                          </div>
+                          <div class="col-sm-6 col-xs-6">
+                              <span class="field-validation-valid" data-valmsg-for="UserMobile" data-valmsg-replace="true"></span>
+                              <input class="form-control" id="UserMobile" name="sosan" type="text" [(ngModel)]="sosan" placeholder="Ví dụ có 4 sân con">
+                          </div>
+                      </div>
+                      <div class="row form-group">
+                          <div class="col-sm-3 col-xs-6">
+                              <label class="control-label">Thông tin</label>
+                          </div>
+                          <div class="col-sm-6 col-xs-6">
+                              <span class="field-validation-valid" data-valmsg-for="UserMobile" data-valmsg-replace="true"></span>
+                              <textarea class="form-control" rows="5" id="comment" name="gioithieu" [(ngModel)]="thongtin" placeholder="Giới thiệu về sân"></textarea>
+                          </div>
+                      </div>
+                      <div class="row form-group">
+                          <input type="submit" class="btn mb20 btn-small btn-primary" (click)="update()" value="Lưu thay đổi">
+                      </div>
+                  </form>
+              </div>
+          </div>
+          </div>
+      </div>
+  </div>

@@ -1,0 +1,102 @@
+<div class="breadcrum">
+    <div class="container">
+        <div class="breadcrum-line">
+            <a href="index">Trang chủ</a>
+            <a>Tìm đối đá bóng</a>
+        </div>
+    </div>
+</div>
+<div class="content-wrap" ng-controller="matchFindingCtrl" id="match-item-list">
+    <div class="container">
+        <div class="row">
+            <div class="p-content">
+                <h1 id="a" class="title-intent title-pages mobile-marginlr-15"><i class="fa fa-futbol-o"
+                        aria-hidden="true"></i>Danh sách các đội bóng</h1>
+                <div class="form-group row mobile-marginlr-15">
+
+                    <div class="col-md-9 col-xs-9 margin-b10">
+                        <input type="text" class="form-control" placeholder="Ví dụ: sân Đại Học Vinh"
+                            [(ngModel)]="khuvuc">
+                    </div>
+                    <div class="col-md-3 col-xs-3 margin-b10">
+                        <button class="btn btn-primary" (click)="timkiem()">Tìm kiếm</button>
+                    </div>
+
+                </div>
+                <div class="jumbotron" *ngIf="arrDB.length==0">
+                    <h3 class="display-5">Rất tiếc</h3>
+                    <p class="lead">Hiện tại chưa có đội bóng ở khu vực này</p>
+                    <hr class="my-4">
+                    <p>Bạn có thể đăng ký đội bóng mới hoặc tìm ở khu vực khác</p>
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="/doibong" role="button">Danh sách đội bóng</a>
+                    </p>
+                </div>
+                <ul class="list-item-san">
+                    <span *ngFor="let DB of arrDB| paginate: { itemsPerPage: 10, currentPage: p } ">
+                        <li class="item-card match-finding-item" >
+                            <div class="row">
+                                <div class="col-md-12 right-item-san right-item-doi">
+                                    <div class="header-item-doi header-tim-doi ">
+                                        <img src="{{DB.anh}}" width="150px" height="150px"
+                                            style="position: absolute;right: 40px; border-radius: 10px;z-index: 1">
+                                        <div class="match-header-texts">
+                                            <h2>
+                                                <span style="font-size: 30px;color: #43a047">{{DB.tendoi}}</span>
+                                                <span class="match-taginfo" *ngIf="DB.timdoi==1">
+                                                    <i class="fa fa-tag" aria-hidden="true">
+                                                        Cần đi khách</i>
+                                                </span>
+                                                <span class="match-taginfo" *ngIf="DB.cosan==1">
+                                                    <i class="fa fa-tag" aria-hidden="true">
+                                                        Đã có sân</i>
+                                                </span>
+
+                                              
+
+
+                                            </h2>
+                                            <a class="btn btn-primary "  href="tel:{{DB.mataikhoan}}">Gọi({{DB.ten}})</a>
+                                            <a class="btn btn-primary "  href="mailto:{{DB.email}}" *ngIf="DB.email">Email({{DB.email}})</a>
+
+                                        </div>
+                                    </div>
+                                    <p class="tim-doi-time"><i class="fa fa-calendar-check-o"
+                                            aria-hidden="true"></i><strong>Thời gian:</strong>{{DB.thoigianthuongda}}
+                                    </p>
+                                    <p class="guest-stadium-list">
+                                        <i class="fa fa-shirtsinbulk" aria-hidden="true"></i><strong>Khu vực:</strong><a
+                                            href="" target="_blank" class="label label-success">{{DB.khuvuc}}</a>
+                                    </p>
+                                    <p class="level-row">
+                                        <i class="fa fa-shirtsinbulk" aria-hidden="true"></i><strong>Trình
+                                            độ:</strong>{{DB.trinhdo}}
+                                    </p>
+
+                                    <p class="quost-doi">
+                                        {{DB.gioithieu}}
+                                    </p>
+                                    <div class="btn-doi-bottom mobile-only mobile-only">
+                                        <button
+                                            class="btn btn-sm btn-primary pull-right btn-batdoi modal-link-angularjs"
+                                            data-modal-tpl="match.invitation" login-required="true"
+                                            data-modal-qs="toTeamId=12943&amp;toUserId=2981&amp;toMatchId=60000&amp;matchId=60000&amp;teamId=12943&amp;toTeamName=Fc tân ước">
+                                            <i class="fa fa-send" aria-hidden="true"></i> Bắt đối
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </span>
+                </ul>
+                <div class="col-md-12">
+                    <div class="pagination_container">
+                        <pagination-controls class="pagination_container" previousLabel="Trước" nextLabel="Tiếp"
+                            (pageChange)="p = $event"></pagination-controls>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

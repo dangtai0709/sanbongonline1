@@ -1,0 +1,44 @@
+<div class="content-wrap is-admin-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="sidebar sidebar-tien-ich">
+          <ul class="list-left-links" role="tablist">
+            <li><a href="#thongbao" data-toggle="tab">Quản lí thông báo</a></li>
+            <li><a href="#datsan" data-toggle="tab">Đặt sân</a></li>
+            <li>
+              <a href="#doibong" data-toggle="tab">Quản lý đội bóng</a>
+              <!-- ngIf: myTeams.length>0 -->
+            </li>
+            <li><a href="#san" data-toggle="tab">Quản lý sân</a></li>
+            <li><a href="#taikhoan" data-toggle="tab">Tài khoản</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-9 sidebar team-management-page">
+        <div class="layout-main tab-content">
+          <div id="doibong" class="tab-pane active stacked-content ">
+            <app-thongtindoibong></app-thongtindoibong>
+          </div>
+          <div id="thongbao" class="tab-pane  stacked-content ">
+            <app-thongbaotimdoi></app-thongbaotimdoi>
+          </div>
+          <div id="san" class="tab-pane  stacked-content ">
+            <app-quanlisan></app-quanlisan>
+          </div>
+          <div id="taikhoan" class="tab-pane  stacked-content ">
+            <app-taikhoan></app-taikhoan>
+          </div>
+          <div id="datsan" class=" tab-pane  stacked-content ">
+            <app-quanlidatsan></app-quanlidatsan>
+          </div>
+
+
+        </div> <!-- /.col -->
+      </div>
+    </div>
+  </div>
+</div>

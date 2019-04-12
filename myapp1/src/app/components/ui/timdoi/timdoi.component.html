@@ -1,0 +1,49 @@
+<div class="breadcrum">
+        <div class="container">
+            <div class="breadcrum-line">
+                <a href="index">Trang chủ</a>
+                <a>Tìm đối đá bóng</a>
+            </div>
+        </div>
+    </div>
+    <div class="content-wrap" ng-controller="matchFindingCtrl" id="match-item-list">
+        <div class="container">
+            <div class="row">
+                <div class="p-content">
+                    <h1 id="a" class="title-intent title-pages mobile-marginlr-15"><i class="fa fa-futbol-o" aria-hidden="true"></i>Danh sách tìm đối</h1>
+                    <div class="jumbotron" *ngIf="arrtimdoi.length<=0">
+                        <h3 class="display-5">Rất tiếc</h3>
+                        <p class="lead">Hiện tại chưa có đội bóng tìm đối thủ</p>
+                        <hr class="my-4">
+                        <p>Bạn có thể đăng ký đội bóng và lên kèo mới</p>
+                        <p class="lead">
+                            <a class="btn btn-primary btn-lg" href="/doibong" role="button">Danh sách đội bóng</a>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4  right-item-doi" *ngFor="let DB of arrtimdoi| paginate: { itemsPerPage: 9, currentPage: p } ">
+                            <div class="jumbotron">
+                                <h2 class="display-4 text-success">{{DB.tendoi}}</h2>
+                                <h4 class="lead text-info"><i class="fa fa-clock-o"></i>{{DB.thoigian}} <br>
+                                    <i class="fa fa-calendar-check-o"></i> {{DB.ngay| date:'dd/MM/yyyy'}}
+                                    <br><a href="https://www.google.com/maps/place/{{DB.diadiem}}">
+                                        <i class="fa fa-map-o" aria-hidden="true"></i> {{DB.diadiem}}
+                                    </a> </h4>
+                                <hr class="my-4">
+                                <p>{{DB.noidung}}
+                                </p>
+                                <p class="lead">
+                                    <a class="btn btn-primary btn-lg" href="thongtindoibong/{{DB.madoibong}}" role="button">Thông tin đội bóng</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="pagination_container">
+                            <pagination-controls class="pagination_container" previousLabel="Trước" nextLabel="Tiếp" (pageChange)="p = $event"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
