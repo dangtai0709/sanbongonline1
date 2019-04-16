@@ -48,7 +48,7 @@
                                             aria-hidden="true">{{SB.mataikhoan}}</i></p>
                                     <form action="abc.html">
 
-                                        <input type="date" name="ngay" [(ngModel)]="ngay">
+                                        <input type="date" name="ngay" min="{{ngay}}" [(ngModel)]="ngay">
                                         <input type="submit" class="btn btn-primary" (click)="changedate(ngay)"
                                             value="Thay đổi">
                                     </form>
@@ -141,8 +141,7 @@
                         <div class="col-sm-9">
                             <input type="date" name="ngay"
                                 class="form-control ng-pristine ng-untouched ng-valid ng-not-empty"
-                                data-msg-require="không được để trống" min="{{ngay}}" required [(ngModel)]="ngay1">
-
+                                data-msg-require="không được để trống" min="{{ngay}}" required [(ngModel)]="ngay">
                         </div>
                     </div>
                     <div class="form-group form-group-sm">

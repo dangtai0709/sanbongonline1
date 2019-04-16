@@ -15,7 +15,7 @@ export class ChitietsanComponent implements OnInit {
   protected nguoi: String;
   protected batdau: String;
   protected ghichu: String;
-  protected ngay1: String;
+  
   protected info: string;
   protected san:String;
   protected httpOptions = {
@@ -28,7 +28,7 @@ export class ChitietsanComponent implements OnInit {
   protected link: string;
   ngOnInit() {
     this.getdata();
-    this.ngay=this.ngay1=new Date().toISOString().slice(0, 10);
+    this.ngay=new Date().toISOString().slice(0, 10);
   }
   getdata() {
     this.lienhe = this.cookieService.get('TK');
@@ -74,14 +74,14 @@ export class ChitietsanComponent implements OnInit {
     this.getdata();
   }
   book() {
-    if (this.ngay1!=null && this.nguoi!=null && this.batdau!=null && this.lienhe !=null) {
+    if (this.ngay!=null && this.nguoi!=null && this.batdau!=null && this.lienhe !=null) {
       if (!this.ghichu) {
         this.ghichu = "";
       }
       var data = {
         "masanbong": this.arrSB[0].masanbong,
         "tennguoidat": this.nguoi,
-        "ngay": this.ngay1,
+        "ngay": this.ngay,
         "batdau": this.batdau,
         "lienhe": this.lienhe,
         "ghichu": this.ghichu
