@@ -94,7 +94,7 @@ export class QuanlisanComponent implements OnInit {
       "gia3": this.gia3,
       
     };
-    if (this.gia1 && this.gia2 && this.gia3  && this.loaisan && this.sosan && this.khuvuc && this.tensan) {
+    if (this.gia1 && this.gia2 && this.gia3 && this.loaisan && this.sosan && this.khuvuc && this.tensan) {
       if (this.isupdate) {
         //update
 

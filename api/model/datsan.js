@@ -5,11 +5,11 @@ var DS = {
 		return db.query("SELECT * FROM datsan ORDER by ngay asc", callback);
 	},
 	getDSById: function (id, callback) {
-		return db.query("SELECT * FROM datsan where lienhe=? ORDER by ngay asc", [id], callback);
+		return db.query("SELECT datsan.*,tensan FROM datsan JOIN sanbong on datsan.masanbong= sanbong.masanbong where lienhe=?  ORDER by ngay asc", [id], callback);
 	},
 	//SELECT datsan.* FROM `datsan` JOIN sanbong on datsan.masanbong= sanbong.masanbong WHERE mataikhoan='333'
 	getDSbyTK: function (id, callback) {
-		var sql = "SELECT datsan.* FROM `datsan` JOIN sanbong on datsan.masanbong= sanbong.masanbong WHERE mataikhoan=? ORDER by ngay asc";
+		var sql = "SELECT datsan.*,tensan FROM `datsan` JOIN sanbong on datsan.masanbong= sanbong.masanbong WHERE mataikhoan=? ORDER by ngay asc";
 		return db.query(sql, [id], callback);
 	},
 	addDS: function (DS, callback) {

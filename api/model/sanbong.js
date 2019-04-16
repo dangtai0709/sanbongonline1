@@ -25,7 +25,7 @@ var SB={
        	db.query("SELECT * FROM sanbong", function(err, result) {
         SB.masanbong="SB"+result.length;
 		SB.trangthai=0;
-        return db.query("INSERT INTO sanbong(masanbong,mataikhoan,loaisan,tensan,anh,thongtin,khuvuc,sosan,gia1,gia2,gia3,trangthai, created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",[SB.masanbong,SB.mataikhoan,SB.loaisan,SB.tensan,SB.anh,SB.thongtin,SB.khuvuc,SB.sosan,SB.gia1,SB.gia2,SB.gia3,SB.trangthai,created_at],callback);    
+        return db.query("INSERT INTO sanbong(masanbong,mataikhoan,loaisan,tensan,anh,thongtin,khuvuc,sosan,gia1,gia2,gia3,trangthai, created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",[SB.masanbong,SB.mataikhoan,SB.loaisan,SB.tensan,SB.anh,SB.thongtin,SB.khuvuc,SB.sosan,SB.gia1,SB.gia2,SB.gia3,SB.trangthai,created_at],callback);    
     });
 		
 		

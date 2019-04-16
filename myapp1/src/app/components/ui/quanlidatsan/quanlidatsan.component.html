@@ -29,7 +29,7 @@
             <tbody>
                 <tr *ngFor="let ds of arrds| paginate: { itemsPerPage: 10, currentPage: p };index as i">
                     <td>{{i}}</td>
-                    <td><a routerLink="/chitiet/{{ds.masanbong}}">{{ds.masanbong}}</a>
+                    <td><a routerLink="/chitiet/{{ds.masanbong}}">{{ds.tensan}}</a>
                         </td>
                     <td>{{ds.tennguoidat}}</td>
                     <td>{{ds.ngay|date:'dd/MM/yyyy'}} lúc {{ds.batdau}}</td>

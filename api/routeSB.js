@@ -49,6 +49,7 @@ router.get('/:id?',function(req,res,next){
 router.post('/',function(req,res,next){
     SB.addSB(req.body,function(err,count){
         if(err){
+            console.log(err);
             res.json(err);
         } else{
             res.json(req.body);

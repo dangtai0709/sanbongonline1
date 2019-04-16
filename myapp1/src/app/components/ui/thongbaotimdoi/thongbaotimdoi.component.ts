@@ -29,8 +29,14 @@ export class ThongbaotimdoiComponent implements OnInit {
     this.getdata();
   }
   getdata() {
+    this.http.get("http://localhost:3000/doibong/" + this.cookieService.get('TK')).subscribe(data => {
+      console.log(data);
+      if (data=="") {
+        this.info="Bạn chưa đăng kí đội bóng nên các thông báo sẽ không được hiện thị ở trang chủ";
+      }
+
+    });
     this.http.get("http://localhost:3000/trandau/ds/" + this.cookieService.get('TK')).subscribe(data => {
-        console.log(data[0]);
     this.arrds=data;
     });
     
