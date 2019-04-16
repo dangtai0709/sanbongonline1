@@ -39,7 +39,7 @@ export class TaikhoanComponent implements OnInit {
         this.ten = data[0].ten;
         this.email = data[0].email;
         this.anh = data[0].anh;
-        this.matkhau = data[0].matkhau;
+        this.matkhau = "";//data[0].matkhau;
       } else {
         this.sodienthoai = this.cookieService.get('TK');
         this.ten = '';

@@ -32,7 +32,7 @@
                     <td><a routerLink="/chitiet/{{ds.masanbong}}">{{ds.masanbong}}</a>
                         </td>
                     <td>{{ds.tennguoidat}}</td>
-                    <td>{{ds.ngay}} lúc {{ds.batdau}}</td>
+                    <td>{{ds.ngay|date:'dd/MM/yyyy'}} lúc {{ds.batdau}}</td>
                     <td>{{ds.ghichu}}</td>
 
                     <td (click)="delete(ds.madatsan)">
