@@ -2,7 +2,7 @@ var db = require('../DB.js');
 
 var DB = {
 	getSL: function ( callback) {
-        var sql="SELECT COUNT(*) as a FROM taikhoan union  SELECT COUNT(*) FROM sanbong    union       SELECT COUNT(*) FROM doibong union  SELECT COUNT(*) FROM datsan";
+        var sql="SELECT COUNT(*) as a FROM taikhoan union ALL SELECT COUNT(*) FROM sanbong union ALL SELECT COUNT(*) FROM doibong union ALL SELECT COUNT(*) FROM datsan";
 		return db.query(sql, callback);
 	},
 getTOPsb:function(callback){
