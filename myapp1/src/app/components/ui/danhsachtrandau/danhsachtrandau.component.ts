@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 @Component({
-  selector: 'app-thunghiem',
-  templateUrl: './thunghiem.component.html',
-  styleUrls: ['./thunghiem.component.css']
+  selector: 'app-danhsachtrandau',
+  templateUrl: './danhsachtrandau.component.html',
+  styleUrls: ['./danhsachtrandau.component.css']
 })
-export class ThunghiemComponent implements OnInit {
+export class DanhsachtrandauComponent implements OnInit {
   protected httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -15,7 +13,7 @@ export class ThunghiemComponent implements OnInit {
     })
   };
  protected arrDB:any;
-  constructor(private cookieService: CookieService,private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.getdata();
@@ -45,6 +43,3 @@ export class ThunghiemComponent implements OnInit {
   
   }
 }
-
-
-
