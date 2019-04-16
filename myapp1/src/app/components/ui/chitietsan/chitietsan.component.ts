@@ -28,6 +28,7 @@ export class ChitietsanComponent implements OnInit {
   protected link: string;
   ngOnInit() {
     this.getdata();
+    this.ngay=this.ngay1=new Date().toISOString().slice(0, 10);
   }
   getdata() {
     this.lienhe = this.cookieService.get('TK');

@@ -26,6 +26,7 @@ export class ThongbaotimdoiComponent implements OnInit {
 
   ngOnInit() {
     this.isupdate = false;
+    this.ngay = new Date().toISOString().slice(0, 10);
     this.getdata();
   }
   getdata() {
@@ -52,7 +53,6 @@ export class ThongbaotimdoiComponent implements OnInit {
     this.id = id;
     this.isupdate = true;
     this.thoigian = this.arrds[i].thoigian;
-    this.ngay = new Date().toISOString().slice(0, 10);
     this.diadiem = this.arrds[i].diadiem;
     this.noidung = this.arrds[i].noidung;
   }
