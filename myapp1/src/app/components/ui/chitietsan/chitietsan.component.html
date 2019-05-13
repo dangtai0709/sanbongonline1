@@ -92,11 +92,34 @@
                                         <td>{{SB.gia3}}</td>
                                         <td>{{arrdadat[3]}} /{{SB.sosan*4}}</td>
                                     </tr>
-                                    <tr>
+                                    <tr *ngIf="dadat[0]">
                                         <td>Chi tiết đặt sân</td>
-                                        <td colspan="2">
-                                            <div class="col-md-4" *ngFor="let ds of dadat"> {{ds.batdau}}: {{ds.dadat}} sân đã được đặt</div>
-                                        </td> 
+                                        <td>
+                                            <h4 class="alert-success">Buổi sáng</h4>
+                                            <div *ngFor="let a of dadat">
+                                                <span
+                                                    *ngIf="a.batdau=='6h-7h' || a.batdau=='7h-8h' ||a.batdau=='8h-9h'|| a.batdau=='9h-10h'">
+                                                    {{a.batdau}}: {{a.dadat}} sân đã được đặt
+                                                 </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h4 class="alert-success">Buổi chiều</h4>
+                                            <div *ngFor="let a of dadat">
+                                                <span
+                                                    *ngIf="a.batdau=='14h-15h' || a.batdau=='15h-16h' ||a.batdau=='16h-17h'|| a.batdau=='17h-18h'">
+                                                    {{a.batdau}}: {{a.dadat}} sân đã được đặt
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h4 class="alert-success">Buổi tối</h4>
+                                            <div *ngFor="let a of dadat">
+                                                <span
+                                                    *ngIf="a.batdau=='18h-19h' || a.batdau=='19h-20h' ||a.batdau=='20h-21h'|| a.batdau=='21h-22h'">
+                                                    {{a.batdau}}: {{a.dadat}} sân đã được đặt</span></div>
+                                        </td>
+
 
                                     </tr>
                                 </tbody>
