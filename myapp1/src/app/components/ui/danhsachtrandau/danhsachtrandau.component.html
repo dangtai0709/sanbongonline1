@@ -1,0 +1,37 @@
+<div class="content-wrap" ng-controller="matchFindingCtrl" id="match-item-list">
+  <div class="container">
+    <div class="row">
+      <div class="p-content">
+        <ul class="list-item-san row">
+          <span class="col-md-3" style="padding: 20px"
+            *ngFor="let DB of arrDB| paginate: { itemsPerPage: 12, currentPage: p } ">
+            <li class="">
+              <div class=" right-item-san right-item-doi ">
+                <div class="header-item-doi header-tim-doi ">
+                  <div class="match-header-texts">
+                    <h2>
+                      <span style="font-size: 30px;color: #43a047">{{DB.tendoi}}</span>
+                    </h2>
+                    <a class="btn btn-primary" style="float:right" (click)="delTB(DB.id)">Xóa trận</a>
+                  </div>
+                </div>
+                <p class="tim-doi-time">Thời gian:{{DB.thoigian}} Ngày : {{DB.ngay|date:'dd/MM/yyyy'}}
+                  Khu vực: {{DB.diadiem}}
+                </p>
+                <p class="quost-doi">
+                  {{DB.noidung}}
+                </p>
+              </div>
+            </li>
+          </span>
+        </ul>
+        <div class="col-md-12">
+          <div class="pagination_container">
+            <pagination-controls class="pagination_container" previousLabel="Trước" nextLabel="Tiếp"
+              (pageChange)="p = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

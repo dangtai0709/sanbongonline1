@@ -16,7 +16,7 @@ var SB={
 	//	return db.query("SELECT masanbong,COUNT(*) as dadat FROM `datsan`  GROUP BY masanbong",callback);
 	},
 	getSBById:function(id,callback){
-	
+
 		var sql="SELECT * from sanbong  where (mataikhoan=? or masanbong=?) ";//and ngay=?
 		return db.query(sql,[id,id],callback);	
     },

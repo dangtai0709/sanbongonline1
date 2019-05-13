@@ -33,7 +33,7 @@
                     </p>
                 </div>
                 <ul class="list-item-san">
-                    <span *ngFor="let DB of arrDB| paginate: { itemsPerPage: 10, currentPage: p } ">
+                    <span *ngFor="let DB of arrDB| paginate: { itemsPerPage: 5, currentPage: p } ">
                         <li class="item-card match-finding-item" >
                             <div class="row">
                                 <div class="col-md-12 right-item-san right-item-doi">
@@ -66,7 +66,7 @@
                                     </p>
                                     <p class="guest-stadium-list">
                                         <i class="fa fa-shirtsinbulk" aria-hidden="true"></i><strong>Khu vực:</strong><a
-                                            href="" target="_blank" class="label label-success">{{DB.khuvuc}}</a>
+                                            href="https://www.google.com/maps/place/{{DB.khuvuc}}" target="_blank" class="label label-success">{{DB.khuvuc}}</a>
                                     </p>
                                     <p class="level-row">
                                         <i class="fa fa-shirtsinbulk" aria-hidden="true"></i><strong>Trình

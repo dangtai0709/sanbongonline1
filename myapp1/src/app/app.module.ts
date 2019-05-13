@@ -27,6 +27,7 @@ import { XacthucComponent } from './components/ui/xacthuc/xacthuc.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { TimdoiComponent } from './components/ui/timdoi/timdoi.component';
 import { ThongbaotimdoiComponent } from './components/ui/thongbaotimdoi/thongbaotimdoi.component';
+import { DanhsachtrandauComponent } from './components/ui/danhsachtrandau/danhsachtrandau.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ThongbaotimdoiComponent } from './components/ui/thongbaotimdoi/thongbao
     XacthucComponent,
     TimdoiComponent,
     ThongbaotimdoiComponent,
+    DanhsachtrandauComponent,
    
     
     

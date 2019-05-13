@@ -15,7 +15,7 @@
                     <h1 id="a" class="title-intent title-pages  mobile-padlr-15"><i class="fa fa-futbol-o"
                             aria-hidden="true"></i> Chi tiết sân {{SB.tensan}}</h1>
 
-                    <ul class="list-item-san" id="table" >
+                    <ul class="list-item-san" id="table">
                         <li class="item-card">
                             <div class="row">
                                 <div class="col-md-5 item-preview-image">
@@ -26,7 +26,7 @@
 
                                 </div>
                                 <div class="col-md-7 right-item-san">
-                                    
+
                                     <p class="phone-numb"><i class="fa fa-info-circle" style="font-size:24px"></i>Thông
                                         tin sân <span style="color: red;font-size: 20px">{{SB.tensan}}
                                         </span>
@@ -48,7 +48,7 @@
                                             aria-hidden="true">{{SB.mataikhoan}}</i></p>
                                     <form action="abc.html">
 
-                                        <input type="date" name="ngay" [(ngModel)]="ngay">
+                                        <input type="date" name="ngay" min="{{ngay}}" [(ngModel)]="ngay">
                                         <input type="submit" class="btn btn-primary" (click)="changedate(ngay)"
                                             value="Thay đổi">
                                     </form>
@@ -57,11 +57,11 @@
                                         </i>
 
                                     </p>
-                                    <div > <a href="javascript:;" class="btn btn-primary"
-                                        data-toggle="modal" data-target="#datsan">
+                                    <div> <a href="javascript:;" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#datsan">
 
-                                        Đặt sân
-                                    </a></div>
+                                            Đặt sân
+                                        </a></div>
                                 </div>
                             </div>
                             <table class="table table-hover">
@@ -91,6 +91,36 @@
                                         <td>Buổi tối</td>
                                         <td>{{SB.gia3}}</td>
                                         <td>{{arrdadat[3]}} /{{SB.sosan*4}}</td>
+                                    </tr>
+                                    <tr *ngIf="dadat[0]">
+                                        <td>Chi tiết đặt sân</td>
+                                        <td>
+                                            <h4 class="alert-success">Buổi sáng</h4>
+                                            <div *ngFor="let a of dadat">
+                                                <span
+                                                    *ngIf="a.batdau=='6h-7h' || a.batdau=='7h-8h' ||a.batdau=='8h-9h'|| a.batdau=='9h-10h'">
+                                                    {{a.batdau}}: {{a.dadat}} sân đã được đặt
+                                                 </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h4 class="alert-success">Buổi chiều</h4>
+                                            <div *ngFor="let a of dadat">
+                                                <span
+                                                    *ngIf="a.batdau=='14h-15h' || a.batdau=='15h-16h' ||a.batdau=='16h-17h'|| a.batdau=='17h-18h'">
+                                                    {{a.batdau}}: {{a.dadat}} sân đã được đặt
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h4 class="alert-success">Buổi tối</h4>
+                                            <div *ngFor="let a of dadat">
+                                                <span
+                                                    *ngIf="a.batdau=='18h-19h' || a.batdau=='19h-20h' ||a.batdau=='20h-21h'|| a.batdau=='21h-22h'">
+                                                    {{a.batdau}}: {{a.dadat}} sân đã được đặt</span></div>
+                                        </td>
+
+
                                     </tr>
                                 </tbody>
                             </table>
@@ -141,8 +171,7 @@
                         <div class="col-sm-9">
                             <input type="date" name="ngay"
                                 class="form-control ng-pristine ng-untouched ng-valid ng-not-empty"
-                                data-msg-require="không được để trống" required [(ngModel)]="ngay1">
-
+                                data-msg-require="không được để trống" min="{{ngay}}" required [(ngModel)]="ngay">
                         </div>
                     </div>
                     <div class="form-group form-group-sm">
@@ -168,7 +197,7 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <input type="text" name="ghichu" [(ngModel)]="ghichu" required placeholder="Ghi Chú">
                     <button id="btnSignIn" type="submit" (click)="book()">Đặt sân</button>
                 </form>
