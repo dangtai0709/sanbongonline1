@@ -15,7 +15,7 @@
                     <h1 id="a" class="title-intent title-pages  mobile-padlr-15"><i class="fa fa-futbol-o"
                             aria-hidden="true"></i> Chi tiết sân {{SB.tensan}}</h1>
 
-                    <ul class="list-item-san" id="table" >
+                    <ul class="list-item-san" id="table">
                         <li class="item-card">
                             <div class="row">
                                 <div class="col-md-5 item-preview-image">
@@ -26,7 +26,7 @@
 
                                 </div>
                                 <div class="col-md-7 right-item-san">
-                                    
+
                                     <p class="phone-numb"><i class="fa fa-info-circle" style="font-size:24px"></i>Thông
                                         tin sân <span style="color: red;font-size: 20px">{{SB.tensan}}
                                         </span>
@@ -57,11 +57,11 @@
                                         </i>
 
                                     </p>
-                                    <div > <a href="javascript:;" class="btn btn-primary"
-                                        data-toggle="modal" data-target="#datsan">
+                                    <div> <a href="javascript:;" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#datsan">
 
-                                        Đặt sân
-                                    </a></div>
+                                            Đặt sân
+                                        </a></div>
                                 </div>
                             </div>
                             <table class="table table-hover">
@@ -91,6 +91,13 @@
                                         <td>Buổi tối</td>
                                         <td>{{SB.gia3}}</td>
                                         <td>{{arrdadat[3]}} /{{SB.sosan*4}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Chi tiết đặt sân</td>
+                                        <td colspan="2">
+                                            <div class="col-md-4" *ngFor="let ds of dadat"> {{ds.batdau}}: {{ds.dadat}} sân đã được đặt</div>
+                                        </td> 
+
                                     </tr>
                                 </tbody>
                             </table>
@@ -167,7 +174,7 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <input type="text" name="ghichu" [(ngModel)]="ghichu" required placeholder="Ghi Chú">
                     <button id="btnSignIn" type="submit" (click)="book()">Đặt sân</button>
                 </form>

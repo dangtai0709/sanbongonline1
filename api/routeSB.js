@@ -9,7 +9,6 @@ router.get('/dadat/:id/:ngay?',function(req,res,next){
     }else{
       date=new Date().toLocaleDateString();
     }
-    console.log(req.params.id+"   "+date);
         SB.getdatsan(req.params.id,date,function(err,rows){
             if(err){
                 res.json(err);

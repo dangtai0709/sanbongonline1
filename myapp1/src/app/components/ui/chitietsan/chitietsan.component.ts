@@ -10,14 +10,15 @@ import { CookieService } from 'ngx-cookie-service';
 export class ChitietsanComponent implements OnInit {
   protected arrSB: object;
   protected arrdadat: any;
+  protected dadat: object;
   protected ngay: String;
   protected lienhe: String;
   protected nguoi: String;
   protected batdau: String;
   protected ghichu: String;
-  
+
   protected info: string;
-  protected san:String;
+  protected san: String;
   protected httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -28,15 +29,13 @@ export class ChitietsanComponent implements OnInit {
   protected link: string;
   ngOnInit() {
     this.getdata();
-    this.ngay=new Date().toISOString().slice(0, 10);
+    this.ngay = new Date().toISOString().slice(0, 10);
   }
   getdata() {
     this.lienhe = this.cookieService.get('TK');
     var id = this.route.snapshot.params.id;
     var link = "http://localhost:3000/sanbong/" + id;
-    console.log(this.route.snapshot.params);
     this.http.get(link).subscribe(data => {
-      //console.log(data[0].sosan);
       this.arrSB = data;
     });
     if (this.ngay) {
@@ -44,29 +43,30 @@ export class ChitietsanComponent implements OnInit {
     } else {
       this.link = "http://localhost:3000/sanbong/dadat/" + id;
     }
-
     this.http.get(this.link).subscribe(data => {
-
-      var arr = [0,0,0,0];
+    this.dadat=data;
+      var arr = [0, 0, 0, 0];
       for (var i = 0; i < Object.keys(data).length; i++) {
         var sang = ["6h-7h", "7h-8h", "8h-9h", "9h-10h"];
         var chieu = ["14h-15h", "15h-16h", "16h-17h", "17h-18h"];
-        var toi=["18h-19h", "19h-20h", "20h-21h", "21h-22h"];
-        if (sang.indexOf(data[i]['batdau'])!=-1 ) {
+        var toi = ["18h-19h", "19h-20h", "20h-21h", "21h-22h"];
+        if (sang.indexOf(data[i]['batdau']) != -1) {
           arr[1] += parseInt(data[i]['dadat']);
         }
-        if (chieu.indexOf(data[i]['batdau'])!=-1) {
+        if (chieu.indexOf(data[i]['batdau']) != -1) {
           arr[2] += parseInt(data[i]['dadat']);
         }
-        if (toi.indexOf(data[i]['batdau'])!=-1) {
+        if (toi.indexOf(data[i]['batdau']) != -1) {
           arr[3] += parseInt(data[i]['dadat']);
         }
       }
      
       this.arrdadat = arr;
 
-      
+
     });
+   
+    
   }
   changedate(ngay) {
     this.ngay = ngay;
@@ -74,7 +74,7 @@ export class ChitietsanComponent implements OnInit {
     this.getdata();
   }
   book() {
-    if (this.ngay!=null && this.nguoi!=null && this.batdau!=null && this.lienhe !=null) {
+    if (this.ngay != null && this.nguoi != null && this.batdau != null && this.lienhe != null) {
       if (!this.ghichu) {
         this.ghichu = "";
       }
